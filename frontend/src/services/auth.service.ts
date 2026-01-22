@@ -40,3 +40,24 @@ export const loginUser = async (email: string, password: string) => {
         }, 1000)
     })
 }
+
+export const registerUser = async (
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+  role: "user" | "admin" = "user"
+) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        id: crypto.randomUUID(),
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+      });
+    }, 800);
+  });
+};
