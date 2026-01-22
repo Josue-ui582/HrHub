@@ -17,7 +17,8 @@ export const AuthProvider = ({children} : {children : ReactNode}) => {
 
     const login = (userData : User, token : string) => {
         localStorage.setItem("token", token)
-        localStorage.setItem("user", JSON.stringify(userData))
+        localStorage.setItem("user", JSON.stringify(userData));
+        setUser(userData);
     }
 
     const logout = () => {
