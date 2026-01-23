@@ -15,9 +15,24 @@ model User {
   password  String
   role      Role     @default(USER)
   createdAt DateTime @default(now())
+
+  presences Presence[]
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+model Presence {
+  id       String    @id @default(uuid())
+  userId   Int
+  date     DateTime
+  checkIn  DateTime?
+  checkOut DateTime?
+  duration Int? // en minutes
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
 }
