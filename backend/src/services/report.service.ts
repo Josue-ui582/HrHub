@@ -41,7 +41,9 @@ export const weeklyReport = async (dateInput?: string) => {
         daysWorked: 0
       };
     }
-    reportMap[p.userId].totalMinutes += p.duration || 0;
+    const effectiveDuration = (p.duration !== null && p.duration > 0) ? p.duration : 1;
+        
+    reportMap[p.userId].totalMinutes += effectiveDuration;
     reportMap[p.userId].daysWorked += 1;
   });
 
