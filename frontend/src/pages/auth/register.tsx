@@ -1,5 +1,5 @@
 import { Form, Input, Button, Card, Alert } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import { registerUser } from "../../services/auth.service";
 
@@ -107,6 +107,7 @@ const Register = () => {
               S’inscrire
             </Button>
           </Form.Item>
+          <p className="text-center">Vous avez déjà un compte ? <Link to="/login" className="text-blue-600 underline">connectez-vous</Link></p>
         </Form>
       </Card>
     </div>
