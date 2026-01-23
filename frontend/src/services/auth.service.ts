@@ -46,18 +46,23 @@ export const registerUser = async (
   lastName: string,
   email: string,
   password: string,
-  role: "user" | "admin" = "user"
 ) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        id: crypto.randomUUID(),
-        firstName,
-        lastName,
-        email,
-        password,
-        role,
-      });
-    }, 800);
-  });
+    const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+        }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || "Erreur d'inscription");
+    }
+  return data;
 };
