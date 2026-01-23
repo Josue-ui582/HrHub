@@ -39,3 +39,33 @@ export const router = express.Router();
  *         description: Erreur de validation
  */
 router.post("/register", authController.register);
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Connexion utilisateur
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: josue@email.com
+ *               password:
+ *                 type: string
+ *                 example: password123
+ *     responses:
+ *       200:
+ *         description: Connexion réussie
+ *       401:
+ *         description: Email ou mot de passe incorrect
+ */
+router.post("/login", authController.login);
