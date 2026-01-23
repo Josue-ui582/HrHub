@@ -8,6 +8,7 @@ import AdminDashboard from "./pages/admin/adminDashboard"
 import AdminHistory from "./pages/admin/adminHistory"
 import UserHistory from "./pages/users/userHistory"
 import NotFound from "./pages/notFound"
+import Home from "./pages/home/home"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
