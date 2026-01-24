@@ -27,6 +27,7 @@ const weeklyRouter = Router();
  *         description: Bilan hebdomadaire calculé
  *       403:
  *         description: Accès réservé aux administrateurs
- */weeklyRouter.get("/weekly", authenticate, authorize("ADMIN"), getWeeklyReport);
+ */
+weeklyRouter.get("/weekly", authenticate, authorize("ADMIN"), getWeeklyReport);
 
 export default weeklyRouter;

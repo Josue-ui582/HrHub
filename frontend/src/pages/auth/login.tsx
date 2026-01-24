@@ -17,7 +17,7 @@ const Login = () => {
             const response = await loginUser(value.email, value.password) as any;
             login(response.user, response.token);
 
-            if (response.user.role === "admin") {
+            if (response.user.role === "ADMIN") {
                 navigate("/admin")
             }else {
                 navigate("/dashboard")

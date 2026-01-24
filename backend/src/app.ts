@@ -5,7 +5,7 @@ import swaggerSpec from "./config/swagger.js";
 
 import { router as authRoutes } from "./routes/auth.routes.js";
 import presenceRoutes from "./routes/presence.routes.js"
-import { weeklyReport } from "./services/report.service.js";
+import weeklyRouter from "./routes/report.routes.js";
 
 const app = express();
 
@@ -18,6 +18,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api/presence", presenceRoutes)
 
-app.use("/api/report/weekly", weeklyReport);
+app.use("/api/reports", weeklyRouter);
 
 export default app;

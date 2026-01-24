@@ -1,6 +1,6 @@
 
 
-const authHeader = () => ({
+export const authHeader = () => ({
   Authorization: `Bearer ${localStorage.getItem("token")}`,
   "Content-Type": "application/json",
 });
@@ -36,3 +36,15 @@ export const getMyHistory = async () => {
   if (!res.ok) throw new Error(data.message);
   return data;
 };
+
+export const getAllPresence = async () => {
+  const res = await fetch("http://localhost:5000/api/presence/all", {
+    headers: authHeader()
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+  return data;
+}
