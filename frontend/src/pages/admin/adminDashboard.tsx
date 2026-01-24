@@ -4,6 +4,7 @@ import { UserOutlined, ClockCircleOutlined, RiseOutlined } from "@ant-design/ico
 import { fetchWeeklyReport } from "../../services/report.service";
 import StatCard from "../../components/ui/StatCard";
 import LoadingScreen from "../../components/ui/LoadingScreen";
+import { formatDurationFriendly } from "../../utils/dateFormatter";
 
 interface WeeklyReport {
   id: string;
@@ -35,7 +36,7 @@ export default function Dashboard() {
     loadData();
   }, []);
 
-  const totalHours = report.reduce((sum, r) => sum + r.totalHours, 0);
+  const totalHours  = report.reduce((sum, r) => sum + r.totalHours, 0) * 60;
 
   if (loading) return <LoadingScreen />;
 
@@ -56,7 +57,7 @@ export default function Dashboard() {
         <Col xs={24} sm={12} lg={6}>
           <StatCard 
             title="Heures totales" 
-            value={`${totalHours.toFixed(2)}h`} 
+            value={formatDurationFriendly(totalHours)} 
             icon={<ClockCircleOutlined />} 
             color="#52c41a"
           />
@@ -64,7 +65,7 @@ export default function Dashboard() {
         <Col xs={24} sm={12} lg={6}>
           <StatCard 
             title="Moyenne / employé" 
-            value={`${(totalHours / (report.length || 1)).toFixed(1)}h`} 
+            value={formatDurationFriendly(totalHours / (report.length || 1))}
             icon={<RiseOutlined />} 
             color="#faad14"
           />
