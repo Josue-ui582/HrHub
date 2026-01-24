@@ -2,11 +2,35 @@ import { Card, Button, message, Typography, Space, Divider } from "antd";
 import { LoginOutlined, LogoutOutlined, HistoryOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom"; // Pour la navigation
 import { checkIn, checkOut } from "../../services/presence.service";
+import { useEffect, useState } from "react";
+import { getUserInfo } from "../../utils/auth";
 
 const { Title, Text } = Typography;
 
+interface User {
+  firstName?: string;
+  lastName?: string;
+}
+
 const UserDashboard = () => {
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState<User>({
+    
+  });
+
+  useEffect(() => {
+    const user = getUserInfo();
+    if (user) {
+        setUserInfo(user)
+    }
+  }, []);
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Bonjour";
+    if (hour < 18) return "Bon après-midi";
+    return "Bonsoir";
+  };
 
   const handleCheckIn = async () => {
     try {
@@ -39,9 +63,10 @@ const UserDashboard = () => {
         style={{ width: '100%', maxWidth: 500, textAlign: 'center', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
       >
         <Space direction="vertical" size="large" style={{ width: '100%' }}>
-          <div>
+          <div className="flex flex-col gap-4">
             <Title level={2} style={{ marginBottom: 0 }}>Dashboard</Title>
             <Text type="secondary">Gérez votre pointage quotidien</Text>
+            <p className="text-xl">{getGreeting()}, {userInfo?.firstName} {userInfo.lastName}</p>
           </div>
 
           <Divider />

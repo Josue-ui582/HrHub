@@ -26,3 +26,13 @@ export const checkOut = async () => {
   if (!res.ok) throw new Error(data.message);
   return data;
 };
+
+export const getMyHistory = async () => {
+  const res = await fetch("http://localhost:5000/api/presence/me", {
+    headers: authHeader(),
+  });
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message);
+  return data;
+};
