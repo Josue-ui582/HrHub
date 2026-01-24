@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { loginUser } from "../../services/auth.service";
@@ -77,6 +77,7 @@ const Login = () => {
                     Se connecter
                     </Button>
                 </Form.Item>
+                <p className="text-center">Vous n'avez pas encore un compte ? <Link to="/register" className="text-blue-600 underline">Inscrivez-vous</Link></p>
                 </Form>
             </Card>
         </div>
