@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getMyHistory } from "../../services/presence.service";
 import dayjs from "dayjs";
 import { formatDisplayTime, formatDurationFriendly } from "../../utils/dateFormatter";
+import { useAuth } from "../../hooks/useAuth";
 
 const { Title, Text } = Typography;
 
@@ -12,6 +13,7 @@ const UserHistory = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   useEffect(() => {
     setLoading(true);
@@ -70,6 +72,11 @@ const UserHistory = () => {
     },
   ];
 
+  const onLogOut = () => {
+        logout();
+        window.location.href = "/login";
+    }
+
   return (
     <div style={{ padding: '40px', backgroundColor: '#f0f2f5', minHeight: '100vh' }}>
       <div style={{ maxWidth: 1000, margin: '0 auto' }}>
@@ -110,6 +117,7 @@ const UserHistory = () => {
               style: { cursor: 'pointer' }
             })}
           />
+          <Button onClick={onLogOut}>Déconnexion</Button>
         </Card>
       </div>
     </div>

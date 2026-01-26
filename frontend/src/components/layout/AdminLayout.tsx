@@ -6,6 +6,7 @@ import {
   LogoutOutlined, 
 } from "@ant-design/icons";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
@@ -15,6 +16,7 @@ type MenuItem = Required<MenuProps>['items'][number];
 const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { logout } = useAuth()
 
   const menuItems: MenuItem[] = [
     {
@@ -44,6 +46,15 @@ const AdminLayout = () => {
     },
   ];
 
+  const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+    if (key === "/logout") {
+      logout();
+      navigate("/login");
+    }else {
+      navigate(key);
+    }
+  }
+
   return (
     <Layout className="min-h-screen">
       <Sider 
@@ -63,7 +74,7 @@ const AdminLayout = () => {
           mode="inline"
           selectedKeys={[location.pathname]}
           items={menuItems}
-          onClick={({ key }) => navigate(key)}
+          onClick={handleMenuClick}
           className="border-none"
         />
       </Sider>
