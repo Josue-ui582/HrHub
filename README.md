@@ -1,37 +1,37 @@
 # 📝 RH Presence Manager
 
-Une solution complète de gestion des présences et de reporting RH, conçue pour offrir une visibilité en temps réel sur l'activité des employés.
+A complete attendance management and HR reporting solution, designed to provide real-time visibility into employee activity.
 
 ---
 
-## 🚀 Stack Technique
+## 🚀 Tech Stack
 
-Le projet utilise une architecture moderne **Fullstack TypeScript** :
+The project uses a modern **Fullstack TypeScript** architecture:
 
-| Partie | Technologie |
+| Layer | Technology |
 | :--- | :--- |
 | **Frontend** | React (Vite), TypeScript, Ant Design, Tailwind CSS |
 | **Backend** | Node.js, Express.js, TypeScript |
-| **Base de données** | PostgreSQL via Prisma ORM |
-| **Authentification** | JWT (JSON Web Tokens) & Context API |
+| **Database** | PostgreSQL via Prisma ORM |
+| **Authentication** | JWT (JSON Web Tokens) & Context API |
 
 ---
 
-## 🛠️ Fonctionnalités Clés
+## 🛠️ Key Features
 
-* **Gestion des Rôles** : Accès différenciés pour les Administrateurs et les Utilisateurs (USER/ADMIN).
-* **Dashboard Dynamique** : Visualisation des heures totales, moyenne par employé et effectif actif.
-* **Registre de Présences** : Table de données interactive avec recherche en temps réel par nom d'employé.
-* **Formatage Intelligent** : Conversion automatique des durées (minutes en heures/minutes lisibles).
-* **Sécurité** : Protection des routes côté client et middleware de vérification des rôles côté serveur.
+* **Role Management**: Different access levels for Administrators and Users (USER/ADMIN).
+* **Dynamic Dashboard**: Visualization of total hours, average per employee, and active workforce.
+* **Attendance Registry**: Interactive data table with real-time search by employee name.
+* **Smart Formatting**: Automatic conversion of durations (minutes into readable hours/minutes).
+* **Security**: Client-side route protection and server-side role verification middleware.
 
 ---
 
-## ⚙️ Installation & Configuration
+## ⚙️ Installation & Setup
 
-### 1. Prérequis
+### 1. Prerequisites
 - Node.js (v18+)
-- PostgreSQL installé et actif
+- PostgreSQL is installed and running
 
 ### 2. Backend
 ```bash
@@ -39,13 +39,14 @@ cd backend
 npm install
 npm run dev
 ```
+
 ### 3. Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-#### 4. Route pour accéder à la documentation api
-```bash
+### 4. API Documentation Route
+```
 http://localhost:5000/api-docs/
-``
+```
